@@ -1,42 +1,64 @@
-const pages = [];
+const images = [
+  "images/P.1.PNG",
+  "images/P.2.jpg",
+  "images/P.3.jpg",
+  "images/P.4.PNG",
+  "images/P.5.PNG",
+  "images/P.6.PNG",
+  "images/P.7.PNG",
+  "images/P.8.PNG",
+  "images/P.9.PNG",
+  "images/P.10.PNG",
+  "images/P.11.PNG",
+  "images/P.12.PNG",
+  "images/P.13.PNG",
+  "images/P.14.PNG",
+  "images/P.15.jpg",
+  "images/P.16.jpg",
+  "images/P.17.PNG",
+  "images/P.18.PNG",
+  "images/P.19.PNG",
+  "images/P.20.PNG",
+  "images/P.21.jpg",
+  "images/P.22.PNG",
+  "images/P.23.jpg",
+  "images/P.24.jpg",
+  "images/P.25.jpg",
+  "images/P.26.jpg",
+  "images/P.27.jpg",
+  "images/P.28.jpg",
+  "images/P.29.jpg",
+  "images/P.30.jpg",
+  "images/P.31.jpg",
+  "images/P.32.jpg"
+];
 
-const extensions = {
-  1: "PNG",
-  2: "jpg",
-  3: "jpg",
-  4: "PNG",
-  5: "PNG",
-  6: "PNG",
-  7: "PNG",
-  8: "PNG",
-  9: "PNG",
-  10: "PNG",
-  11: "PNG",
-  12: "PNG",
-  13: "PNG",
-  14: "PNG",
-  15: "jpg",
-  16: "jpg",
-  17: "PNG",
-  18: "PNG",
-  19: "PNG",
-  20: "PNG",
-  21: "jpg",
-  22: "PNG",
-  23: "jpg",
-  24: "jpg",
-  25: "jpg",
-  26: "jpg",
-  27: "jpg",
-  28: "jpg",
-  29: "jpg",
-  30: "jpg",
-  31: "jpg",
-  32: "jpg"
-};
+let currentPage = 0;
 
-for (let i = 1; i <= 32; i++) {
-  pages.push(`images/P.${i}.${extensions[i]}`);
+const pageImage = document.getElementById("pageImage");
+const pageNumber = document.getElementById("pageNumber");
+const pageTotal = document.getElementById("pageTotal");
+
+pageTotal.textContent = images.length;
+
+function showPage(index) {
+  pageImage.src = images[index];
+  pageNumber.textContent = index + 1;
 }
 
-console.log(pages);
+document.getElementById("next").addEventListener("click", () => {
+  if (currentPage < images.length - 1) {
+    currentPage++;
+    showPage(currentPage);
+  }
+});
+
+document.getElementById("prev").addEventListener("click", () => {
+  if (currentPage > 0) {
+    currentPage--;
+    showPage(currentPage);
+  }
+});
+
+// 最初のページを表示
+showPage(currentPage);
