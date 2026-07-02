@@ -221,6 +221,31 @@ window.addEventListener("load", () => {
         loading.classList.add("hide");
 
         initializePageFlip();
+   document.addEventListener("keydown", (event) => {
+
+    if (!pageFlip) return;
+
+    switch (event.key) {
+
+        case "ArrowLeft":
+            pageFlip.flipPrev();
+            break;
+
+        case "ArrowRight":
+            pageFlip.flipNext();
+            break;
+
+        case "Home":
+            pageFlip.flip(0);
+            break;
+
+        case "End":
+            pageFlip.flip(pageFlip.getPageCount() - 1);
+            break;
+
+    }
+
+});
 function updateNavigation() {
 
     if (!pageFlip) return;
@@ -275,6 +300,32 @@ function initializePageFlip() {
     });
 
     pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+updateNavigation();
+
+pageFlip.on("flip", () => {
+
+});
+
+    updateNavigation();
+prevButton.addEventListener("click", () => {
+
+    if (pageFlip) {
+
+        pageFlip.flipPrev();
+
+    }
+
+});
+
+nextButton.addEventListener("click", () => {
+
+    if (pageFlip) {
+
+        pageFlip.flipNext();
+
+    }
+
+});
 
 }
 
