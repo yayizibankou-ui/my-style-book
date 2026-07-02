@@ -239,7 +239,7 @@ function initializePageFlip() {
 
     }
 
-    const pageFlip = new St.PageFlip(book, {
+    pageFlip = new St.PageFlip(book, {
 
         width: 550,
         height: 780,
