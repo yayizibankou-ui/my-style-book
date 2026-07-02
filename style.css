@@ -1,8 +1,29 @@
-```css
 /* =====================================================
    MY STYLE BOOK
-   style.css
+   Complete Edition
+   Part 1
 ===================================================== */
+
+:root{
+
+    --paper:#fbf8f3;
+    --background:#efe8df;
+    --cover:#3d3028;
+    --cover-light:#8b6a4d;
+
+    --text:#2e2b29;
+    --sub:#7d7269;
+
+    --shadow:0 25px 60px rgba(0,0,0,.18);
+
+    --radius:10px;
+
+    --transition:.45s ease;
+
+    --page-width:550px;
+    --page-height:780px;
+
+}
 
 *{
     margin:0;
@@ -10,216 +31,236 @@
     box-sizing:border-box;
 }
 
-html,
-body{
-    width:100%;
-    height:100%;
+html{
+
+    font-size:16px;
+
+    scroll-behavior:smooth;
+
 }
 
 body{
-    background:#e8e0d5;
-    font-family:"Times New Roman", serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    font-family:
+        "Cormorant Garamond",
+        "Times New Roman",
+        serif;
+
     overflow:hidden;
-    color:#333;
+
 }
 
-/* =========================
+/* =====================================================
    Loading
-========================= */
+===================================================== */
 
 #loading{
+
     position:fixed;
+
     inset:0;
-    background:#f8f5ef;
+
+    background:#f7f3ed;
+
     display:flex;
-    flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
+
     z-index:9999;
+
     transition:opacity .8s ease;
+
 }
 
 #loading.hide{
+
     opacity:0;
+
     pointer-events:none;
+
 }
 
-#loading h1{
-    font-size:42px;
-    letter-spacing:8px;
-    margin-bottom:18px;
+.loader{
+
+    text-align:center;
+
 }
 
-#loading p{
-    color:#777;
-    letter-spacing:2px;
-    font-size:15px;
+.loader-title{
+
+    font-size:2.3rem;
+
+    letter-spacing:.35rem;
+
+    color:#4d3a2e;
+
 }
 
-/* =========================
-   Book
-========================= */
+.loader-subtitle{
 
-#book-wrapper{
+    margin-top:18px;
+
+    font-size:.9rem;
+
+    letter-spacing:.18rem;
+
+    color:#9a8f86;
+
+    text-transform:uppercase;
+
+}
+
+/* =====================================================
+   Book Wrapper
+===================================================== */
+
+.book-wrapper{
+
     width:100vw;
+
     height:100vh;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
-    opacity:1;
-    transition:opacity .8s ease;
+    padding:40px;
+
 }
 
-#book-wrapper.hidden{
-    opacity:0;
-}
+/* =====================================================
+   Book
+===================================================== */
 
 #book{
-    width:90vw;
-    max-width:900px;
-    height:85vh;
+
+    width:var(--page-width);
+
+    height:var(--page-height);
+
+    box-shadow:var(--shadow);
+
 }
 
-/* =========================
-   Pages
-========================= */
+/* =====================================================
+   Page
+===================================================== */
 
 .page{
-    background:#fff;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+
+    background:var(--paper);
+
     position:relative;
+
+    overflow:hidden;
+
 }
 
-.page img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    display:block;
-    user-select:none;
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+        rgba(255,255,255,.22),
+        rgba(255,255,255,0)
+    );
+
     pointer-events:none;
-    background:white;
+
 }
 
-/* =========================
+/* =====================================================
    Cover
-========================= */
+===================================================== */
 
 .cover{
-    background:white;
+
+    background:
+
+    linear-gradient(
+        160deg,
+        #4a3a31,
+        #2d221c
+    );
+
+    color:white;
+
 }
 
-.cover-content{
+.cover-inner{
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
     text-align:center;
-    padding:40px;
+
+    padding:60px;
+
 }
 
 .cover h1{
-    font-size:58px;
-    letter-spacing:10px;
-    margin-bottom:20px;
-}
 
-.cover p{
-    font-size:20px;
-    color:#666;
-    margin-bottom:60px;
-}
+    font-size:2.6rem;
 
-.cover span{
-    color:#999;
-    letter-spacing:4px;
-    font-size:14px;
-}
+    letter-spacing:.35rem;
 
-/* =========================
-   Back Cover
-========================= */
-
-.back-cover{
-    background:#f7f7f7;
-    flex-direction:column;
-}
-
-.back-cover h2{
-    font-size:34px;
-    margin-bottom:18px;
-}
-
-.back-cover p{
-    color:#888;
-    letter-spacing:2px;
-}
-
-/* =========================
-   Page Indicator
-========================= */
-
-#page-indicator{
-    position:fixed;
-    left:50%;
-    bottom:24px;
-    transform:translateX(-50%);
-
-    padding:8px 16px;
-
-    border-radius:30px;
-
-    background:rgba(255,255,255,.82);
-
-    backdrop-filter:blur(8px);
-
-    font-size:13px;
-    letter-spacing:2px;
-
-    color:#666;
-
-    z-index:1000;
-}
-
-/* =========================
-   PageFlip
-========================= */
-
-.stf__parent{
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.18);
-}
-
-.stf__block{
-    background:white;
-}
-
-/* =========================
-   Responsive
-========================= */
-
-@media (max-width:768px){
-
-    #book{
-        width:96vw;
-        height:82vh;
-    }
-
-    .cover h1{
-        font-size:34px;
-        letter-spacing:5px;
-    }
-
-    .cover p{
-        font-size:16px;
-        margin-bottom:40px;
-    }
-
-    #page-indicator{
-        bottom:16px;
-        font-size:12px;
-        padding:7px 14px;
-    }
+    font-weight:400;
 
 }
-```
+
+.cover h2{
+
+    margin-top:18px;
+
+    font-size:.95rem;
+
+    letter-spacing:.22rem;
+
+    color:#d6c5b5;
+
+    font-weight:400;
+
+}
+
+.cover .author{
+
+    margin-top:70px;
+
+    font-size:.9rem;
+
+    letter-spacing:.2rem;
+
+    color:#bfa996;
+
+}
+
+.cover .year{
+
+    margin-top:10px;
+
+    color:#988372;
+
+    font-size:.8rem;
+
+}
