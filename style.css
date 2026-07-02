@@ -1,61 +1,136 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-  background: #ece7df;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body{
+    background:#e8e0d5;
+    font-family:"Times New Roman", serif;
+    overflow:hidden;
 }
 
-.viewer {
-  width: 100%;
-  max-width: 430px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+/* Loading */
+
+#loading{
+    position:fixed;
+    inset:0;
+    background:#f8f5ef;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    transition:opacity .8s;
 }
 
-.book {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow:
-    0 12px 40px rgba(0,0,0,.18);
+#loading h1{
+    font-size:42px;
+    letter-spacing:8px;
+    margin-bottom:20px;
 }
 
-.book img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  background:white;
+#loading p{
+    font-size:16px;
+    color:#666;
 }
 
-.nav{
-  width:44px;
-  height:44px;
-  border:none;
-  border-radius:50%;
-  background:white;
-  box-shadow:0 4px 12px rgba(0,0,0,.15);
-  font-size:24px;
-  cursor:pointer;
+/* Book */
+
+#book-wrapper{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.pageIndicator{
-  position:fixed;
-  bottom:24px;
-  left:50%;
-  transform:translateX(-50%);
-  color:#666;
-  font-size:14px;
+#book{
+    width:90vw;
+    max-width:900px;
+    height:85vh;
+}
+
+/* Page */
+
+.page{
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    position:relative;
+}
+
+/* Images */
+
+.page img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:white;
+}
+
+/* Cover */
+
+.cover{
+    background:white;
+    flex-direction:column;
+}
+
+.cover h1{
+    font-size:58px;
+    letter-spacing:10px;
+    margin-bottom:20px;
+}
+
+.cover p{
+    font-size:20px;
+    color:#666;
+    margin-bottom:60px;
+}
+
+.cover span{
+    font-size:14px;
+    letter-spacing:4px;
+    color:#999;
+}
+
+/* Back Cover */
+
+.back-cover{
+    background:#f7f7f7;
+    flex-direction:column;
+}
+
+.back-cover h2{
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+.back-cover p{
+    color:#888;
+}
+
+/* Page Number */
+
+.page-number{
+    position:absolute;
+    bottom:20px;
+    width:100%;
+    text-align:center;
+    color:#888;
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+/* Shadow */
+
+.stf__parent{
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.18);
+}
+
+.stf__block{
+    background:white;
 }
