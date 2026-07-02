@@ -221,7 +221,19 @@ window.addEventListener("load", () => {
         loading.classList.add("hide");
 
         initializePageFlip();
+function updateNavigation() {
 
+    if (!pageFlip) return;
+
+    const current = pageFlip.getCurrentPageIndex();
+    const total = pageFlip.getPageCount();
+
+    pageIndicator.textContent = `${current + 1} / ${total}`;
+
+    prevButton.disabled = current === 0;
+    nextButton.disabled = current === total - 1;
+
+}
     }, 800);
 
 });
