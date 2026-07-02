@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
 
 <title>MY STYLE BOOK</title>
 
 <link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.css"
+/>
+
 </head>
 
 <body>
 
-<div class="background"></div>
+<!-- Loading -->
 
-<div class="viewer">
+<div id="loading">
 
-    <button id="prev" class="nav left">‹</button>
+<h1>MY STYLE BOOK</h1>
 
-    <div class="book">
-
-        <img id="pageImage" src="" alt="page">
-
-    </div>
-
-    <button id="next" class="nav right">›</button>
+<p>Loading...</p>
 
 </div>
 
-<div class="pageIndicator">
-    <span id="pageNumber">1</span>
-    /
-    <span id="pageTotal">32</span>
+<!-- Book -->
+
+<div id="book-wrapper">
+
+<div id="book">
+
+<!-- 表紙 -->
+
+<div class="page cover">
+
+<h1>MY STYLE BOOK</h1>
+
+<p>Everyday Uniform</p>
+
+<span>Tap to Open</span>
+
 </div>
+
+<!-- JSで自動生成 -->
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
