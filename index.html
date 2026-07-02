@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>MY STYLE BOOK</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:#e8e4dc;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:100vh;
+
+font-family:Inter,sans-serif;
+
+}
+
+.book{
+
+width:900px;
+height:620px;
+
+background:white;
+
+border-radius:8px;
+
+box-shadow:
+0 30px 70px rgba(0,0,0,.18);
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+.page{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+font-size:50px;
+
+color:#444;
+
+background:white;
+
+transition:.6s;
+
+}
+
+.page img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+}
+
+.cover{
+
+background:#F8F6F2;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.cover h1{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:64px;
+
+font-weight:400;
+
+letter-spacing:.08em;
+
+}
+
+.cover p{
+
+margin-top:18px;
+
+font-size:18px;
+
+letter-spacing:.12em;
+
+color:#777;
+
+}
+
+button{
+
+position:absolute;
+
+bottom:30px;
+
+padding:12px 26px;
+
+border:none;
+
+background:#222;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+border-radius:40px;
+
+}
+
+#prev{
+
+left:30px;
+
+}
+
+#next{
+
+right:30px;
+
+}
+
+button:hover{
+
+opacity:.8;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="book">
+
+<div class="page cover">
+
+<h1>MY STYLE BOOK</h1>
+
+<p>Everyday Uniform</p>
+
+</div>
+
+<div class="page" style="display:none;">
+<h2>P.1</h2>
+</div>
+
+<div class="page" style="display:none;">
+<h2>P.2</h2>
+</div>
+
+<div class="page" style="display:none;">
+<h2>P.3</h2>
+</div>
+
+<div class="page" style="display:none;">
+<h2>P.4</h2>
+</div>
+
+<button id="prev">←</button>
+
+<button id="next">→</button>
+
+</div>
+
+<script>
+
+const pages=document.querySelectorAll(".page");
+
+let current=0;
+
+function showPage(index){
+
+pages.forEach(p=>p.style.display="none");
+
+pages[index].style.display="flex";
+
+}
+
+showPage(current);
+
+document.getElementById("next").onclick=()=>{
+
+if(current<pages.length-1){
+
+current++;
+
+showPage(current);
+
+}
+
+}
+
+document.getElementById("prev").onclick=()=>{
+
+if(current>0){
+
+current--;
+
+showPage(current);
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
