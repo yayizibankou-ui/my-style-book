@@ -3,6 +3,43 @@
    script.js
    Part 1
 ====================================================== */
+function buildTableOfContents() {
+
+    const items = [
+
+        "表紙",
+        "タイトル",
+
+        ...IMAGE_FILES.map((_, index) => `P.${String(index + 1).padStart(2,"0")}`),
+
+        "Thank You",
+        "Back Cover"
+
+    ];
+
+    tocList.innerHTML = "";
+
+    items.forEach((title, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "toc-item";
+
+        button.textContent = title;
+
+        button.addEventListener("click", () => {
+
+            pageFlip.flip(index);
+
+            tocPanel.classList.remove("open");
+
+        });
+
+        tocList.appendChild(button);
+
+    });
+
+}
 const tocButton = document.getElementById("tocButton");
 const closeToc = document.getElementById("closeToc");
 const tocPanel = document.getElementById("tocPanel");
@@ -224,6 +261,19 @@ window.addEventListener("load", () => {
         loading.classList.add("hide");
 
         initializePageFlip();
+       buildTableOfContents();
+
+tocButton.addEventListener("click", () => {
+
+    tocPanel.classList.add("open");
+
+});
+
+closeToc.addEventListener("click", () => {
+
+    tocPanel.classList.remove("open");
+
+});
    document.addEventListener("keydown", (event) => {
 
     if (!pageFlip) return;
