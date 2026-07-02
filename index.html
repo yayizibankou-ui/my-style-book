@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>MY STYLE BOOK</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-background:#ece8e0;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-font-family:Georgia,serif;
-}
-
-.book{
-width:380px;
-height:700px;
-background:white;
-border-radius:8px;
-box-shadow:0 30px 60px rgba(0,0,0,.18);
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:42px;
-letter-spacing:3px;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div class="book">
-MY STYLE BOOK
+<div class="background"></div>
+
+<div class="viewer">
+
+    <button id="prev" class="nav left">‹</button>
+
+    <div class="book">
+
+        <img id="pageImage" src="" alt="page">
+
+    </div>
+
+    <button id="next" class="nav right">›</button>
+
 </div>
+
+<div class="pageIndicator">
+    <span id="pageNumber">1</span>
+    /
+    <span id="pageTotal">32</span>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
