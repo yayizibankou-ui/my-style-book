@@ -3,7 +3,10 @@
    script.js
    Part 1
 ====================================================== */
-
+const tocButton = document.getElementById("tocButton");
+const closeToc = document.getElementById("closeToc");
+const tocPanel = document.getElementById("tocPanel");
+const tocList = document.getElementById("tocList");
 const IMAGE_FILES = [
     "P.1.PNG",
     "P.2.jpg",
