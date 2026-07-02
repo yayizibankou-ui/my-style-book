@@ -139,3 +139,149 @@ function createPhotoPage(fileName,index){
     return page;
 
 }
+/* ==========================
+   Ending Page
+========================== */
+
+function createEndingPage() {
+
+    const page = createPage("page");
+
+    page.innerHTML = `
+        <div class="ending-page">
+            <div>
+                <h2>Thank You</h2>
+
+                <p>
+                    Every style tells a story.<br>
+                    Thank you for reading.
+                </p>
+            </div>
+        </div>
+    `;
+
+    return page;
+
+}
+
+/* ==========================
+   Back Cover
+========================== */
+
+function createBackCover() {
+
+    const page = createPage("page back-cover");
+
+    page.innerHTML = `
+        <div class="cover-inner">
+            <p>MY STYLE BOOK</p>
+        </div>
+    `;
+
+    return page;
+
+}
+
+/* ==========================
+   Generate Book
+========================== */
+
+function buildBook() {
+
+    book.innerHTML = "";
+
+    book.appendChild(createCover());
+    book.appendChild(createTitlePage());
+
+    IMAGE_FILES.forEach((file, index) => {
+        book.appendChild(createPhotoPage(file, index));
+    });
+
+    book.appendChild(createEndingPage());
+    book.appendChild(createBackCover());
+
+}
+
+/* ==========================
+   Loading
+========================== */
+
+window.addEventListener("load", () => {
+
+    buildBook();
+
+    const loading = document.getElementById("loading");
+
+    setTimeout(() => {
+
+        loading.classList.add("hide");
+
+        initializePageFlip();
+
+    }, 800);
+
+});
+
+/* ==========================
+   PageFlip
+========================== */
+
+function initializePageFlip() {
+
+    if (typeof St === "undefined" || !St.PageFlip) {
+
+        console.warn("StPageFlip が読み込まれていません。通常表示で続行します。");
+        return;
+
+    }
+
+    const pageFlip = new St.PageFlip(book, {
+
+        width: 550,
+        height: 780,
+
+        size: "stretch",
+
+        minWidth: 315,
+        maxWidth: 900,
+
+        minHeight: 420,
+        maxHeight: 1200,
+
+        maxShadowOpacity: 0.35,
+
+        showCover: true,
+
+        mobileScrollSupport: false,
+
+        usePortrait: window.innerWidth < 900
+
+    });
+
+    pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+
+}
+
+/* ==========================
+   Resize
+========================== */
+
+window.addEventListener("resize", () => {
+
+    // 必要に応じて今後拡張
+
+});
+
+/* ==========================
+   Image Error
+========================== */
+
+document.addEventListener("error", (event) => {
+
+    if (event.target.tagName !== "IMG") return;
+
+    event.target.style.objectFit = "contain";
+    event.target.style.padding = "40px";
+    event.target.alt = "Image not found";
+
+}, true);
