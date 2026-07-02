@@ -1,16 +1,31 @@
+```css
+/* =====================================================
+   MY STYLE BOOK
+   style.css
+===================================================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
 body{
     background:#e8e0d5;
     font-family:"Times New Roman", serif;
     overflow:hidden;
+    color:#333;
 }
 
-/* Loading */
+/* =========================
+   Loading
+========================= */
 
 #loading{
     position:fixed;
@@ -20,29 +35,45 @@ body{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    z-index:999;
-    transition:opacity .8s;
+    z-index:9999;
+    transition:opacity .8s ease;
+}
+
+#loading.hide{
+    opacity:0;
+    pointer-events:none;
 }
 
 #loading h1{
     font-size:42px;
     letter-spacing:8px;
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 #loading p{
-    font-size:16px;
-    color:#666;
+    color:#777;
+    letter-spacing:2px;
+    font-size:15px;
 }
 
-/* Book */
+/* =========================
+   Book
+========================= */
 
 #book-wrapper{
     width:100vw;
     height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
+    opacity:1;
+    transition:opacity .8s ease;
+}
+
+#book-wrapper.hidden{
+    opacity:0;
 }
 
 #book{
@@ -51,31 +82,40 @@ body{
     height:85vh;
 }
 
-/* Page */
+/* =========================
+   Pages
+========================= */
 
 .page{
-    background:white;
+    background:#fff;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
     position:relative;
 }
-
-/* Images */
 
 .page img{
     width:100%;
     height:100%;
     object-fit:contain;
+    display:block;
+    user-select:none;
+    pointer-events:none;
     background:white;
 }
 
-/* Cover */
+/* =========================
+   Cover
+========================= */
 
 .cover{
     background:white;
-    flex-direction:column;
+}
+
+.cover-content{
+    text-align:center;
+    padding:40px;
 }
 
 .cover h1{
@@ -91,12 +131,14 @@ body{
 }
 
 .cover span{
-    font-size:14px;
-    letter-spacing:4px;
     color:#999;
+    letter-spacing:4px;
+    font-size:14px;
 }
 
-/* Back Cover */
+/* =========================
+   Back Cover
+========================= */
 
 .back-cover{
     background:#f7f7f7;
@@ -104,33 +146,80 @@ body{
 }
 
 .back-cover h2{
-    font-size:36px;
-    margin-bottom:20px;
+    font-size:34px;
+    margin-bottom:18px;
 }
 
 .back-cover p{
     color:#888;
-}
-
-/* Page Number */
-
-.page-number{
-    position:absolute;
-    bottom:20px;
-    width:100%;
-    text-align:center;
-    color:#888;
-    font-size:13px;
     letter-spacing:2px;
 }
 
-/* Shadow */
+/* =========================
+   Page Indicator
+========================= */
+
+#page-indicator{
+    position:fixed;
+    left:50%;
+    bottom:24px;
+    transform:translateX(-50%);
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(8px);
+
+    font-size:13px;
+    letter-spacing:2px;
+
+    color:#666;
+
+    z-index:1000;
+}
+
+/* =========================
+   PageFlip
+========================= */
 
 .stf__parent{
     box-shadow:
-        0 30px 80px rgba(0,0,0,.18);
+        0 25px 70px rgba(0,0,0,.18);
 }
 
 .stf__block{
     background:white;
 }
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width:768px){
+
+    #book{
+        width:96vw;
+        height:82vh;
+    }
+
+    .cover h1{
+        font-size:34px;
+        letter-spacing:5px;
+    }
+
+    .cover p{
+        font-size:16px;
+        margin-bottom:40px;
+    }
+
+    #page-indicator{
+        bottom:16px;
+        font-size:12px;
+        padding:7px 14px;
+    }
+
+}
+```
