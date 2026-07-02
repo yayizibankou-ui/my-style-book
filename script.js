@@ -40,7 +40,11 @@ const IMAGE_FILES = [
 ];
 
 const book = document.getElementById("book");
+let pageFlip = null;
 
+const pageIndicator = document.getElementById("pageIndicator");
+const prevButton = document.getElementById("prevPage");
+const nextButton = document.getElementById("nextPage");
 function createPage(className = "page") {
     const page = document.createElement("div");
     page.className = className;
