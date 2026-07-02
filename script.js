@@ -1,199 +1,141 @@
-/* =====================================================
+/* ======================================================
    MY STYLE BOOK
    script.js
-   Part 1 / 2
-===================================================== */
+   Part 1
+====================================================== */
 
-/* =========================
-   Image List
-========================= */
-
-const images = [
-    "images/P.1.PNG",
-    "images/P.2.jpg",
-    "images/P.3.jpg",
-    "images/P.4.PNG",
-    "images/P.5.PNG",
-    "images/P.6.PNG",
-    "images/P.7.PNG",
-    "images/P.8.PNG",
-    "images/P.9.PNG",
-    "images/P.10.PNG",
-    "images/P.11.PNG",
-    "images/P.12.PNG",
-    "images/P.13.PNG",
-    "images/P.14.PNG",
-    "images/P.15.jpg",
-    "images/P.16.jpg",
-    "images/P.17.PNG",
-    "images/P.18.PNG",
-    "images/P.19.PNG",
-    "images/P.20.PNG",
-    "images/P.21.jpg",
-    "images/P.22.PNG",
-    "images/P.23.jpg",
-    "images/P.24.jpg",
-    "images/P.25.jpg",
-    "images/P.26.jpg",
-    "images/P.27.jpg",
-    "images/P.28.jpg",
-    "images/P.29.jpg",
-    "images/P.30.jpg",
-    "images/P.31.jpg",
-    "images/P.32.jpg"
+const IMAGE_FILES = [
+    "P.1.PNG",
+    "P.2.jpg",
+    "P.3.jpg",
+    "P.4.PNG",
+    "P.5.PNG",
+    "P.6.PNG",
+    "P.7.PNG",
+    "P.8.PNG",
+    "P.9.PNG",
+    "P.10.PNG",
+    "P.11.PNG",
+    "P.12.PNG",
+    "P.13.PNG",
+    "P.14.PNG",
+    "P.15.jpg",
+    "P.16.jpg",
+    "P.17.PNG",
+    "P.18.PNG",
+    "P.19.PNG",
+    "P.20.PNG",
+    "P.21.jpg",
+    "P.22.PNG",
+    "P.23.jpg",
+    "P.24.jpg",
+    "P.25.jpg",
+    "P.26.jpg",
+    "P.27.jpg",
+    "P.28.jpg",
+    "P.29.jpg",
+    "P.30.jpg",
+    "P.31.jpg",
+    "P.32.jpg"
 ];
 
-/* =========================
-   Elements
-========================= */
+const book = document.getElementById("book");
 
-const loading = document.getElementById("loading");
-const wrapper = document.getElementById("book-wrapper");
-const bookElement = document.getElementById("book");
-const pageIndicator = document.getElementById("current-page");
-
-let pageFlip;
-
-/* =========================
-   Image Preload
-========================= */
-
-function preloadImages(list){
-
-    return Promise.all(
-
-        list.map(src =>
-
-            new Promise(resolve => {
-
-                const img = new Image();
-
-                img.onload = () => resolve();
-
-                img.onerror = () => {
-
-                    console.warn("Image not found:", src);
-
-                    resolve();
-
-                };
-
-                img.src = src;
-
-            })
-
-        )
-
-    );
-
-}
-
-/* =========================
-   Create Image Page
-========================= */
-
-function createImagePage(src,index){
-
+function createPage(className = "page") {
     const page = document.createElement("div");
-
-    page.className = "page";
-
-    const img = document.createElement("img");
-
-    img.src = src;
-
-    img.alt = `Page ${index+1}`;
-
-    img.loading = "eager";
-
-    img.draggable = false;
-
-    img.onerror = function(){
-
-        this.style.objectFit = "contain";
-
-        this.style.padding = "80px";
-
-        this.src =
-            "data:image/svg+xml;charset=UTF-8," +
-            encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="800"
-                 height="1000">
-
-                <rect
-                    width="100%"
-                    height="100%"
-                    fill="white"/>
-
-                <text
-                    x="50%"
-                    y="50%"
-                    text-anchor="middle"
-                    fill="#999"
-                    font-size="32">
-
-                    Image Not Found
-
-                </text>
-
-            </svg>
-            `);
-
-    };
-
-    page.appendChild(img);
-
+    page.className = className;
     return page;
-
 }
 
-/* =========================
-   Back Cover
-========================= */
+/* ==========================
+   Cover
+========================== */
 
-function createBackCover(){
+function createCover() {
 
-    const page = document.createElement("div");
-
-    page.className = "page back-cover";
+    const page = createPage("page cover");
 
     page.innerHTML = `
+        <div class="cover-inner">
+            <h1>MY STYLE BOOK</h1>
+            <h2>Timeless Elegance</h2>
 
-        <div style="text-align:center">
+            <div class="author">
+                Shiki
+            </div>
 
-            <h2>MY STYLE BOOK</h2>
+            <div class="year">
+                2026
+            </div>
+        </div>
+    `;
 
-            <p>Thank you for reading.</p>
+    return page;
+}
+
+/* ==========================
+   Title Page
+========================== */
+
+function createTitlePage(){
+
+    const page = createPage("page");
+
+    page.innerHTML = `
+        <div class="title-page">
+
+            <div class="title-page-inner">
+
+                <h1>MY STYLE BOOK</h1>
+
+                <h2>Timeless Elegance</h2>
+
+                <div class="title-divider"></div>
+
+                <div class="title-author">
+                    Editorial Edition
+                </div>
+
+            </div>
 
         </div>
-
     `;
 
     return page;
 
 }
 
-/* =========================
-   Generate Pages
-========================= */
+/* ==========================
+   Photo Page
+========================== */
 
-function buildBook(){
+function createPhotoPage(fileName,index){
 
-    images.forEach((src,index)=>{
+    const page=createPage("page");
 
-        bookElement.appendChild(
+    page.innerHTML=`
 
-            createImagePage(src,index)
+        <div class="photo-page fade-in">
 
-        );
+            <div class="photo-frame">
 
-    });
+                <img
+                    src="images/${fileName}"
+                    alt="Page ${index+1}"
+                    loading="lazy">
 
-    bookElement.appendChild(
+            </div>
 
-        createBackCover()
+            <div class="page-number">
 
-    );
+                ${String(index+1).padStart(2,"0")}
+
+            </div>
+
+        </div>
+
+    `;
+
+    return page;
 
 }
