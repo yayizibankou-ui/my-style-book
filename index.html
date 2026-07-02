@@ -2,55 +2,39 @@
 <html lang="ja">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>MY STYLE BOOK</title>
+    <meta name="description" content="MY STYLE BOOK - Timeless Elegance">
+    <meta name="theme-color" content="#3d3028">
 
-    <meta name="description"
-          content="MY STYLE BOOK - Timeless Elegance">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<div id="loading">
-
-    <div class="loader">
-
-        <div class="loader-title">
-            MY STYLE BOOK
+    <div id="loading">
+        <div class="loader">
+            <div class="loader-title">MY STYLE BOOK</div>
+            <div class="loader-subtitle">Timeless Elegance</div>
         </div>
-
-        <div class="loader-subtitle">
-            Timeless Elegance
-        </div>
-
     </div>
 
-</div>
+    <main class="book-wrapper">
+        <div id="book"></div>
+    </main>
 
+    <!-- StPageFlip -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
 
-
-<div class="book-wrapper">
-
-    <div id="book">
-
-        <!-- JavaScriptで生成 -->
-
-    </div>
-
-</div>
-
-
-
-<script src="libs/pageflip.min.js"></script>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
