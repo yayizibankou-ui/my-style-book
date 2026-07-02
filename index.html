@@ -70,7 +70,11 @@
     <button id="prevPage" class="nav-button" type="button">
         ← 前へ
     </button>
-
+    
+    <button id="tocButton" class="nav-button" type="button">
+        ☰ 目次
+    </button>
+    
     <div id="pageIndicator" class="page-indicator">
         1 / 36
     </div>
@@ -80,6 +84,19 @@
     </button>
 
 </nav>
+    <aside id="tocPanel" class="toc-panel" aria-label="目次">
+
+    <div class="toc-header">
+        <h2>CONTENTS</h2>
+
+        <button id="closeToc" class="nav-button" type="button">
+            ✕
+        </button>
+    </div>
+
+    <div id="tocList" class="toc-list"></div>
+
+</aside>
     <noscript>
 
         <div class="no-script">
